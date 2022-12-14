@@ -38,7 +38,7 @@ const Login = () => {
         if (v) {
       setloading(true)
                 
-            const res = await axios.post('https://chatting-club.herokuapp.com/api/user/login', { email , password })
+            const res = await axios.post('https://chatting-club-backend.onrender.com/api/user/login', { email , password })
 
             if (res.data.success) {
                 setloading(false)

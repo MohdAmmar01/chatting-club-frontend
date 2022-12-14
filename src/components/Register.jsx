@@ -65,7 +65,7 @@ const Register = () => {
         "file": selectedimage
 
       }
-      const res = await axios.post('https://chatting-club.herokuapp.com/api/user/register', out)
+      const res = await axios.post('https://chatting-club-backend.onrender.com/api/user/register', out)
       if (res.data.success) {
         setloading(false)
         navigate('/')

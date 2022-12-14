@@ -31,7 +31,7 @@ function Home() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    setsocket(io('https://chatting-club.herokuapp.com', { upgrade:true}))
+    setsocket(io('https://chatting-club-backend.onrender.com', { upgrade:true}))
   }, [])
 
   useEffect(() => {
@@ -49,7 +49,7 @@ useEffect(()=>{
     
     const getusers = async () => {
       if (!data) {
-        const res = await axios.get('https://chatting-club.herokuapp.com/api/user/getallusers', { withCredentials: true })
+        const res = await axios.get('https://chatting-club-backend.onrender.com/api/user/getallusers', { withCredentials: true })
         
         if (res.data.success === true) {
           setdata(res.data.message)
@@ -62,7 +62,7 @@ useEffect(()=>{
     const getprofile = async () => {
       if (!profile) {
         
-        const res = await axios.get('https://chatting-club.herokuapp.com/api/user/profile', { withCredentials: true })
+        const res = await axios.get('https://chatting-club-backend.onrender.com/api/user/profile', { withCredentials: true })
         if (res.data.success === true) {
           setprofile(res.data.message)
           
@@ -75,7 +75,7 @@ useEffect(()=>{
   
   useEffect(() => {
     const getmessages = async () => {
-      const res = await axios.post(`https://chatting-club.herokuapp.com/api/user/getmessage`, { reciever: elem?._id })
+      const res = await axios.post(`https://chatting-club-backend.onrender.com/api/user/getmessage`, { reciever: elem?._id })
       if (res.data.success === true) { setmessages(res.data.message) }
       
     }
@@ -142,14 +142,14 @@ useEffect(()=>{
         [...prev, obj]
       )
     })
-    const res = await axios.post(`https://chatting-club.herokuapp.com/api/user/newmessage`, obj)
+    const res = await axios.post(`https://chatting-club-backend.onrender.com/api/user/newmessage`, obj)
     if (res.status === 200) {
       settext('')
     }
   }
   
   const logouthandler = async () => {
-    const res = await axios.post('https://chatting-club.herokuapp.com/api/user/logout', { Credential: true })
+    const res = await axios.post('https://chatting-club-backend.onrender.com/api/user/logout', { Credential: true })
     if (res.data.success === true) {
       navigate('/login')
     }
